@@ -2,6 +2,7 @@ import {server} from '../../../config'
 //this is going to be a single id page
 import Link from 'next/link'
 import { useRouter } from "next/router" 
+import Meta from '../../../components/Meta'
 
 //to make id
 
@@ -12,6 +13,8 @@ const article = ({article}) => {
     //^This can be used to get an {id}
     return(
         <>
+        <Meta title={article.title} description={article.excerpt}/>
+         {/* Set the title prop , it is parsed into Meta.js */}
             <h1>{article.title}</h1>
             <p>{article.body}</p>
             <br />
@@ -84,17 +87,18 @@ export const getStaticProps = async (context) => {
 export const getStaticPaths = async () => {
     const res = await fetch(`${server}/api/articles`)
     const articles = await res.json()
-
+    
     const ids = articles.map(article => article.id)
+    
     //store each id to an array
     const paths = ids.map(id => ({params: {id: id.toString()}}))
-    
     //return an Object with params, return an id key, the value is stringified id.
     return {
         paths,
         fallback: false //if the user goes to params that doesn't exist it will print 404 page
     }
 }
+
 
 
 export default article

@@ -1,5 +1,5 @@
 import {server} from '../config'
-import Head from 'next/head'
+// import Head from 'next/head'
 //this is used for custom titles or meta tags, keywords, etc
 import ArticleList from '../components/ArticleList'
 
@@ -7,10 +7,10 @@ export default function Home({ articles }) {
   // console.log(articles)
   return (
     <div>
-      <Head>
+      {/* <Head>
         <title>WebDeb Newz</title>
         <meta name='keywords' content='web development, programming' />
-      </Head>
+      </Head> */}
 
       <ArticleList articles={articles}/>
     </div>
