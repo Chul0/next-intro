@@ -9,7 +9,8 @@ const Layout = ({ children }) => {
         <div className={styles.container}>
             <main className={styles.main}>
                 <Header />
-                {children}
+                {children} 
+                {/* {children} corresponds to line 9 in _app.js. so it shows all components under header */}
                 </main>
         </div>
         </>
